@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lipikha Loganathan - Portfolio</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #e0e0e0;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: #61dafb;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #21a1f1;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 50%;
+      border: 4px solid #61dafb;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    header {
+      background-color: #1f1f1f;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.7);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    nav a {
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+    }
+
+    nav a.active,
+    nav a:hover {
+      background: #61dafb;
+      color: #121212;
+    }
+
+    section {
+      padding: 4rem 0;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    h1, h2, h3 {
+      color: #61dafb;
+      margin-bottom: 1rem;
+    }
+
+    .home-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .home-content > div {
+      flex: 1 1 280px;
+    }
+
+    .skills-row {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .skill {
+      background: #282828;
+      padding: 0.6rem 1.2rem;
+      border-radius: 25px;
+      font-weight: 600;
+      box-shadow: 0 0 5px #61dafb;
+      transition: transform 0.3s;
+    }
+
+    .skill:hover {
+      transform: scale(1.1);
+    }
+
+    .about-me p {
+      max-width: 700px;
+      margin: 0 auto 1.5rem auto;
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+
+    .project-box {
+      background:#1f1f1f;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(97,218,251,0.2);
+      margin-bottom: 2rem;
+    }
+
+    .project-box a button {
+      background: #61dafb;
+      color: #000;
+      padding: 0.7rem 1.4rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 0.9rem;
+      background: #1f1f1f;
+      color: #888;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: none;
+    }
+
+    form button {
+      background: #61dafb;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: #121212;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .social-buttons a {
+      margin: 0 10px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: #fff;
+      font-weight: bold;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .social-buttons a.linkedin {
+      background-color: #0077b5;
+    }
+
+    .social-buttons a.github {
+      background-color: #333;
+    }
+
+    @media (max-width: 700px) {
+      .home-content {
+        flex-direction: column;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .skills-row {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About Me</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <!-- Home Section -->
+  <section id="home">
+    <div class="home-content">
+      <div>
+        <img src="linked.jpg" alt="Profile Photo" width="200" height="200" />
+      </div>
+      <div>
+        <h1>Hello, I'm <span style="color:#21a1f1;">Lipikha Loganathan</span></h1>
+        <p style="font-size:1.3rem; margin:1rem 0;">A passionate <strong>Web Developer</strong> crafting beautiful and efficient web experiences.</p>
+        <h3>Skills</h3>
+        <div class="skills-row">
+          <span class="skill">HTML</span>
+          <span class="skill">CSS</span>
+          <span class="skill">JavaScript</span>
+        </div>
+        <div class="skills-row">
+          <span class="skill">React</span>
+          <span class="skill">Node.js</span>
+          <span class="skill">Git</span>
+        </div>
+        <div class="skills-row">
+          <span class="skill">Responsive Design</span>
+          <span class="skill">API Integration</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about" class="about-me">
+    <h2>About Me</h2>
+    <p>
+      Hi! I'm Lipikha Loganathan, an aspiring software engineer, currently in my 3rd year of the Integrated M.Tech in Software Engineering program. My journey into the world of technology has been driven by an insatiable curiosity and a deep passion for building innovative, user-focused digital solutions.
+      Over the years, I've gained a strong foundation in computer science fundamentals, including data structures, algorithms, and software design principles. My academic journey is complemented by hands-on experience with full-stack web development, object-oriented programming, and version control systems like Git.
+      I’m particularly enthusiastic about web technologies, AI-powered applications, and simplifying complex problems into elegant code.
+    </p>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="project-box">
+      <h3>Plant Disease Detection Using Deep Learning</h3>
+      <p>A CNN-based system for detecting potato leaf diseases (Early Blight, Late Blight, Mosaic Virus) using image analysis.</p>
+      <a href="c:\Users\lipik\Downloads\Soft Computing Submission 3.pdf" target="_blank">
+        <button>View Project</button>
+      </a>
+    </div>
+
+    <div class="project-box">
+      <h3>Drought Prediction Using Weather and Soil Data</h3>
+      <p>Machine learning models (Gradient Boost, MLP) used to predict droughts based on soil and meteorological data.</p>
+      <a href="c:\Users\lipik\Downloads\Data Mining Techniques Submission 3.pdf" target="_blank">
+        <button>View Project</button>
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form id="contactForm" style="max-width:600px;margin:auto;text-align:center;">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+      <p id="confirmation" style="margin-top:10px;color:lightgreen;display:none;">✅ Message sent!</p>
+    </form>
+
+    <div class="social-buttons" style="margin-top:2rem; text-align:center;">
+      <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="linkedin">LinkedIn</a>
+      <a href="https://github.com/yourusername" target="_blank" class="github">GitHub</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Lipikha Loganathan. All rights reserved.
+</footer>
+
+<script>
+  // Highlight active nav link on scroll
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('nav a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 70;
+      if (pageYOffset >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href').includes(current)) {
+        link.classList.add('active');
+      }
+    });
+  });
+
+  // Contact form confirmation
+  const form = document.getElementById('contactForm');
+  const confirmation = document.getElementById('confirmation');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    confirmation.style.display = 'block';
+    form.reset();
+  });
+</script>
+
+</body>
+</html>

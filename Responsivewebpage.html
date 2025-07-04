@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShopSmart - Smart Shopping Starts Here</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #333;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 1000;
+      transition: background 0.3s ease;
+    }
+
+    header.scrolled {
+      background: #1e90ff;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: yellow;
+    }
+
+    section {
+      padding: 100px 20px;
+      margin-top: 80px;
+      min-height: 100vh;
+    }
+
+    #home {
+      background: #f0f8ff;
+    }
+
+    #about {
+      background: #e6f7ff;
+    }
+
+    #services {
+      background: #d9f2ff;
+    }
+
+    #contact {
+      background: #ccefff;
+    }
+
+    h1, h2 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    p, ul {
+      max-width: 900px;
+      margin-top: 1rem;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        background: #444;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        padding: 1rem;
+        display: none;
+      }
+
+      nav ul.active {
+        display: block;
+      }
+
+      .menu-toggle {
+        display: block;
+        cursor: pointer;
+      }
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header id="navbar">
+    <div class="logo">ShopSmart</div>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <nav>
+      <ul id="nav-list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home">
+    <h1>Welcome to ShopSmart</h1>
+    <p>
+      <strong>ShopSmart</strong> is your ultimate destination for hassle-free and smart shopping. Browse thousands of products from top brands, discover exclusive deals, and enjoy lightning-fast delivery – all from one convenient platform.
+    </p>
+    <p>
+      Whether you’re shopping for fashion, electronics, home essentials, or more, ShopSmart offers a seamless, secure, and enjoyable online experience tailored just for you.
+    </p>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>
+      <strong>ShopSmart</strong> is an innovative e-commerce platform designed to make your shopping journey smooth and rewarding. Built with the latest web technologies, we ensure a responsive and intuitive experience across all devices.
+    </p>
+    <p>
+      Our mission is to deliver quality products at the best prices, while prioritizing customer satisfaction through real-time support and user-friendly features.
+    </p>
+    <p>
+      With ShopSmart, you can expect reliability, speed, and a touch of personalization every time you shop.
+    </p>
+  </section>
+
+  <section id="services">
+    <h2>What We Offer</h2>
+    <p>At ShopSmart, we bring a world of convenience to your fingertips:</p>
+    <ul>
+      <li>🛒 Wide selection of products across multiple categories</li>
+      <li>📦 Fast and trackable shipping options</li>
+      <li>💳 Secure payment gateways and multiple payment modes</li>
+      <li>📱 User-friendly interface for mobile, tablet, and desktop</li>
+      <li>🔁 Easy returns and refund policies</li>
+      <li>💬 24/7 customer support with live chat assistance</li>
+    </ul>
+    <p>
+      Whether you’re furnishing your home or refreshing your wardrobe, ShopSmart is your go-to shopping destination.
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>
+      Need help with your order or have feedback for us? Our support team is always here to assist you!
+    </p>
+    <ul>
+      <li>📧 Email: <a href="mailto:support@shopsmart.com">support@shopsmart.com</a></li>
+      <li>📞 Phone: +91-98765-43210</li>
+      <li>💬 Live Chat: Available 24/7 on our app</li>
+    </ul>
+    <p>
+      Join our growing community of smart shoppers and let us make your online shopping experience better than ever.
+    </p>
+  </section>
+
+  <script>
+    // Change navbar background on scroll
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navList = document.getElementById('nav-list');
+    menuToggle.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
