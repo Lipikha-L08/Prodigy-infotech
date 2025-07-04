@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weather App Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+    }
+    .nav {
+      background: #161b22;
+      padding: 1em;
+      color: #58a6ff;
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.2em;
+    }
+    .container {
+      text-align: center;
+      max-width: 450px;
+      margin: 100px auto;
+      background: #21262d;
+      padding: 2em;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    input, button {
+      padding: 12px;
+      width: 100%;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+    input {
+      background: #0d1117;
+      color: #e6edf3;
+      border: 1px solid #30363d;
+    }
+    button {
+      background-color: #238636;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #2ea043;
+    }
+    .highlight {
+      background-color: #1f6feb;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+      color: #f0f6fc;
+      box-shadow: 0 0 5px rgba(31, 111, 235, 0.4);
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <div>🌤️ Weather App</div>
+    <div id="logoutBtn" class="hidden">
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <!-- Login Page -->
+  <div class="container" id="loginPage">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Enter Username" autocomplete="username" />
+    <input type="password" id="password" placeholder="Enter Password" autocomplete="current-password" />
+    <button onclick="login()">Login</button>
+  </div>
+
+  <!-- Home Page -->
+  <div class="container hidden" id="homePage">
+    <h2>Weather Info</h2>
+    <input type="text" id="city" placeholder="Enter city" />
+    <button onclick="getWeather()">Get Weather</button>
+    <button onclick="getLocationWeather()">Use My Location</button>
+    <div id="weatherResult"></div>
+  </div>
+
+  <script>
+    const apiKey = '8954cfac859de1a5aa0666b42130d1fe';
+
+    // Login function: validates non-empty username and password, then stores locally
+    function login() {
+      const user = document.getElementById('username').value.trim();
+      const pass = document.getElementById('password').value.trim();
+      if (user && pass) {
+        localStorage.setItem('user', user);
+        localStorage.setItem('pass', pass);
+        showHomePage();
+      } else {
+        alert('Please enter both username and password');
+      }
+    }
+
+    // Logout clears saved credentials and reloads the page
+    function logout() {
+      localStorage.removeItem('user');
+      localStorage.removeItem('pass');
+      location.reload();
+    }
+
+    // Show home page and logout button; hide login page
+    function showHomePage() {
+      document.getElementById('loginPage').classList.add('hidden');
+      document.getElementById('homePage').classList.remove('hidden');
+      document.getElementById('logoutBtn').classList.remove('hidden');
+    }
+
+    // On page load, check if user is logged in, if yes show home page
+    window.onload = () => {
+      if (localStorage.getItem('user') && localStorage.getItem('pass')) {
+        showHomePage();
+      }
+    };
+
+    // Fetch weather by city name
+    function getWeather() {
+      const city = document.getElementById('city').value.trim();
+      if (!city) {
+        alert('Enter a city name');
+        return;
+      }
+      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric`)
+        .then(res => res.json())
+        .then(data => showWeather(data))
+        .catch(() => alert('Error fetching weather'));
+    }
+
+    // Fetch weather by user's current location
+    function getLocationWeather() {
+      if (!navigator.geolocation) {
+        alert('Geolocation is not supported by your browser');
+        return;
+      }
+      navigator.geolocation.getCurrentPosition(pos => {
+        const { latitude, longitude } = pos.coords;
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`)
+          .then(res => res.json())
+          .then(data => showWeather(data))
+          .catch(() => alert('Error fetching weather'));
+      }, () => {
+        alert('Unable to retrieve your location');
+      });
+    }
+
+    // Show weather data in the page
+    function showWeather(data) {
+      if (!data || data.cod !== 200) {
+        document.getElementById('weatherResult').innerHTML = '<p>City not found or API error.</p>';
+        return;
+      }
+      const html = `
+        <div class="highlight">
+          <h3>${data.name}, ${data.sys.country}</h3>
+          <p>🌡️ Temperature: ${data.main.temp}°C</p>
+          <p>📋 Condition: ${data.weather[0].description}</p>
+          <p>💨 Wind: ${data.wind.speed} m/s</p>
+          <p>💧 Humidity: ${data.main.humidity}%</p>
+          <p>☁️ Cloud Cover: ${data.clouds.all}%</p>
+          <p>📈 Pressure: ${data.main.pressure} hPa</p>
+        </div>
+      `;
+      document.getElementById('weatherResult').innerHTML = html;
+    }
+  </script>
+</body>
+</html>
